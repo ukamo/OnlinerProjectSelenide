@@ -2,16 +2,10 @@ package com.it_academy.homework6.onliner.framework;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.RemoteWebDriver;
-
-import java.util.concurrent.TimeUnit;
-
 import static com.codeborne.selenide.Selenide.open;
 
 public class DriveManager {
+    /*
     private static ThreadLocal<RemoteWebDriver> driver =
             new ThreadLocal();
 
@@ -28,13 +22,15 @@ public class DriveManager {
         }
         return driver.get();
     }
-
+*/
     public static void closeBrowser() {
 //        driver.get().close();
 //        driver.remove();
         Selenide.closeWindow();
         Selenide.closeWebDriver();
     }
+
+
 
     public static void initDriver(String type){
         Configuration.browser = type;
