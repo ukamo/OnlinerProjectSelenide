@@ -124,13 +124,14 @@ public class CatalogPageTest {
 
     @Test
     public void testTitleGoodsOfList() {
-        header.clickOnMainNavigationLink("Каталог")
-                .clickOnSectionCatalogLink("Компьютеры и\u00a0сети")
-                .clickTextSectionItemCatalog("Комплектующие");
-        ElementsCollection components = catalogPage.getGoodsComponentsByName("Комплектующие");
-        assertThat(catalogPage.checkComponentTitlesCount(components))
+        ElementsCollection components =
+                header.clickOnMainNavigationLink("Каталог")
+                        .clickOnSectionCatalogLink("Компьютеры и\u00a0сети")
+                        .clickTextSectionItemCatalog("Комплектующие")
+                        .getGoodsComponentsByName("Комплектующие");
+        assertThat(catalogPage.checkComponentTitlesCount(components)
                 .as("Количество тайтлов не соответствует количеству компонентов")
-                .isTrue();
+                .shouldHave(CollectionCondition.size(components.size())));
     }
 
     @Test
