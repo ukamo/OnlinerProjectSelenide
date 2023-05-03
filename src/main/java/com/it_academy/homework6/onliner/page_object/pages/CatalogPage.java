@@ -17,17 +17,12 @@ public class CatalogPage extends BasePage {
             "//ul[@class='catalog-navigation-classifier ']/li//span[normalize-space(text()) and contains(text(), '%s')]";
     private static final String SECTIONS_CATALOG_XPATH_PATTERN =
             "//ul[@class='catalog-navigation-classifier ']/li[@class = 'catalog-navigation-classifier__item ']";
-
-    //private static final String SECTIONS_ITEM_XPATH_PATTERN =
-    //        "//div[contains(@class,'catalog-navigation-list__aside-title')]";
     private static final String SECTION_ITEM_XPATH_PATTERN =
             "//div[contains(@class,'aside-item')]//div[contains(text(),'%s')]";
     private static final String TITLE_XPATH_PATTERN =
             "//div[contains(@class,'item_active')]//div[contains(@class,'dropdown-list')]//span[contains(@class,'dropdown-title')]";
-                    //   "//div[contains(@class,'item_active')]//div[contains(text(),'%s')]/..//div[contains(@class,'dropdown-list')]//span[contains(@class,'dropdown-title')]";
     public static final String GOODS_ITEM_XPATH_PATTERN =
-                    "//div[contains(@class,'item_active')]//a[contains(@class,'list__dropdown-item')]";
-            //"//div[contains(@class,'item_active')]//div[contains(text(),'%s')]/..//a[contains(@class,'list__dropdown-item')]";
+            "//div[contains(@class,'item_active')]//a[contains(@class,'list__dropdown-item')]";
     private static final String PRODUCT_XPATH_PATTERN =
             "//div[contains(@class, 'aside-item_active')]//div[contains(@class, 'dropdown-list')]"
                     + "/a[contains(@href, 'onliner')]//span[contains(@class, 'title') and contains(text(), '%s')]";
@@ -37,35 +32,34 @@ public class CatalogPage extends BasePage {
     public ElementsCollection elementsFromSectionCatalog() {
         ElementsCollection elements = $$x(SECTIONS_CATALOG_XPATH_PATTERN);
         return elements;
-        //elements.shouldHave(CollectionCondition.size(titles.size()));
     }
 
     public CatalogPage clickOnSectionCatalogLink(String link) {
-        $x(format(SECTION_FOR_CATALOG_XPATH_PATTERN,link))
-                .shouldBe(and("clickable",visible,enabled), Duration.ofSeconds(30))
+        $x(format(SECTION_FOR_CATALOG_XPATH_PATTERN, link))
+                .shouldBe(and("clickable", visible, enabled), Duration.ofSeconds(30))
                 .click();
         return this;
     }
 
     public SelenideElement getTextSectionItemCatalogLink(String link) {
-        return $x(format(SECTION_ITEM_XPATH_PATTERN,link))
-                .shouldBe(and("clickable",visible,enabled), Duration.ofSeconds(30));
+        return $x(format(SECTION_ITEM_XPATH_PATTERN, link))
+                .shouldBe(and("clickable", visible, enabled), Duration.ofSeconds(30));
     }
 
 
     public CatalogPage clickTextSectionItemCatalog(String link) {
-        $x(format(SECTION_ITEM_XPATH_PATTERN,link))
-                .shouldBe(and("clickable",visible,enabled), Duration.ofSeconds(30))
+        $x(format(SECTION_ITEM_XPATH_PATTERN, link))
+                .shouldBe(and("clickable", visible, enabled), Duration.ofSeconds(30))
                 .click();
         return this;
     }
 
     public ElementsCollection checkTitleOfCatalogPage(String testContains) {
-        return $$x (format(TITLE_XPATH_PATTERN, testContains));
-         }
+        return $$x(format(TITLE_XPATH_PATTERN, testContains));
+    }
 
     public ElementsCollection getGoodsComponentsByName(String name) {
-      return $$x(format(GOODS_ITEM_XPATH_PATTERN, name));
+        return $$x(format(GOODS_ITEM_XPATH_PATTERN, name));
     }
 
     public boolean checkComponentTitlesCount(ElementsCollection components) {
@@ -73,19 +67,17 @@ public class CatalogPage extends BasePage {
     }
 
     public ElementsCollection checkComponentPreviewsCount(ElementsCollection components) {
-        ElementsCollection elements =$$x("//div[contains(@class, 'aside-item_active')]//span[contains(@class,'catalog-navigation-list__dropdown-image')]");
-       return elements;
+        ElementsCollection elements = $$x("//div[contains(@class, 'aside-item_active')]//span[contains(@class,'catalog-navigation-list__dropdown-image')]");
+        return elements;
     }
 
     public ElementsCollection checkComponentDescriptionCount(ElementsCollection components) {
-        ElementsCollection elements =$$x("//div[contains(@class, 'aside-item_active')]//span[contains(@class,'catalog-navigation-list__dropdown-description')]");
+        ElementsCollection elements = $$x("//div[contains(@class, 'aside-item_active')]//span[contains(@class,'catalog-navigation-list__dropdown-description')]");
         return elements;
-
-        //  return isComponentSizeWithText(components, ".catalog-navigation-list__dropdown-description");
     }
 
     public ElementsCollection checkGoodsComponentsSize() {
-        ElementsCollection elements =$$x("//div[contains(@class, 'aside-item_active')]//span[contains(@class,'catalog-navigation-list__dropdown-data')]");
+        ElementsCollection elements = $$x("//div[contains(@class, 'aside-item_active')]//span[contains(@class,'catalog-navigation-list__dropdown-data')]");
         return elements;
     }
 
@@ -94,30 +86,21 @@ public class CatalogPage extends BasePage {
         return elements;
     }
 
-    public boolean checkCountAndPrice(List<String> collect) {
-        List<String> files = collect.stream().filter(f -> f.contains("\n")).map(f -> f.replaceAll("\n", " ")).toList();
-        Pattern pattern = Pattern.compile("(\\d+(,\\d+)?)(\\D+)(\\d+(,\\d+)?)(.*?)");
-        List<String> matching = files.stream()
-                .filter(pattern.asPredicate())
-                .toList();
-        return files.size() == matching.size();
-    }
-
     public void clickOnProductLink(String product) {
-        $x(format(PRODUCT_XPATH_PATTERN,product))
-                .shouldBe(and("clickable",visible,enabled), Duration.ofSeconds(30))
+        $x(format(PRODUCT_XPATH_PATTERN, product))
+                .shouldBe(and("clickable", visible, enabled), Duration.ofSeconds(30))
                 .click();
     }
 
     public CatalogPage clickOnCatalogClassifierLink(String link) {
-        $x(format(CATALOG_CLASSIFIER_LINK_XPATH_PATTERN,link))
+        $x(format(CATALOG_CLASSIFIER_LINK_XPATH_PATTERN, link))
                 .shouldBe(visible, Duration.ofSeconds(30))
                 .click();
         return this;
     }
 
-    public SelenideElement verifyBrowserTitleIsDisplayed(String title){
-        return $x(format(SECTION_FOR_CATALOG_XPATH_PATTERN,title))
-             .shouldBe(and("clickable",visible,enabled), Duration.ofSeconds(30));
+    public SelenideElement verifyBrowserTitleIsDisplayed(String title) {
+        return $x(format(SECTION_FOR_CATALOG_XPATH_PATTERN, title))
+                .shouldBe(and("clickable", visible, enabled), Duration.ofSeconds(30));
     }
 }

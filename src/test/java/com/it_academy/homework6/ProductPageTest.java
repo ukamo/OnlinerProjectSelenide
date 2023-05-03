@@ -93,10 +93,5 @@ public class ProductPageTest extends BaseTest{
                 .as("Количество чекбоксов не соответствует количеству компонентов")
                 .isTrue();
     }
-  /*  @AfterSuite
-    public void closeWindow(){
-        header.closeAllWindow();
-    }
 
-   */
 }

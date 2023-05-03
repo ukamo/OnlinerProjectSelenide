@@ -26,13 +26,14 @@ public class PageSearch extends BasePage {
     String parentWindow = null;
 
 
-    public SelenideElement getSearchElement(String title){
+    public SelenideElement getSearchElement(String title) {
         return $x(format(SEARCH_MAIN_TEXT_XPATH_PATTERN, title))
-                .shouldBe(and("clickable",visible,enabled), Duration.ofSeconds(10));
+                .shouldBe(and("clickable", visible, enabled), Duration.ofSeconds(10));
     }
+
     public PageSearch typeOnSearchField(String inputText) {
         $x(format(SEARCH_MAIN_XPATH_PATTERN))
-                .shouldBe(and("clickable",visible,enabled), Duration.ofSeconds(10))
+                .shouldBe(and("clickable", visible, enabled), Duration.ofSeconds(10))
                 .setValue(inputText)
                 .pressEnter();
         return this;
@@ -56,17 +57,18 @@ public class PageSearch extends BasePage {
 
     public PageSearch closeIFrameFieldSearching() {
         $x(format(IFRAME_CLOSE_XPATH_PATTERN))
-                .shouldBe(and("clickable",visible,enabled), Duration.ofSeconds(10))
+                .shouldBe(and("clickable", visible, enabled), Duration.ofSeconds(10))
                 .click();
         return this;
     }
+
     public PageSearch switchFromMain() {
         getWebDriver().switchTo().parentFrame();
         return this;
     }
 
     public SelenideElement deleteDataInSearchField() {
-          $x(format(SEARCH_MAIN_XPATH_PATTERN))
+        $x(format(SEARCH_MAIN_XPATH_PATTERN))
                 .clear();
         return $x(format(SEARCH_MAIN_XPATH_PATTERN));
     }

@@ -21,15 +21,17 @@ public class CatalogPageTest {
 
     @BeforeClass
     public void createForTestCatalogPage() {
-        header= new Header();
+        header = new Header();
         header.navigate(Links.HOME_PAGE.getLink());
         catalogPage = new CatalogPage();
     }
+
     @DataProvider(name = "verticalList")
     public static Object[][] verticalList() {
         return new Object[][]{{"Ноутбуки, компьютеры, мониторы", "Ноутбуки, компьютеры, мониторы"},
                 {"Комплектующие", "Комплектующие"}};
     }
+
     @Test
     public void testNavigateToCatalog() {
         header.clickOnMainNavigationLink("Каталог");
@@ -37,11 +39,12 @@ public class CatalogPageTest {
                 .as("Title of Catalog is incorrect")
                 .isEqualTo("Каталог Onlíner");
     }
+
     @Test
     public void testSizeOfSectionOnCatalog() {
-        ArrayList<String> titles = new ArrayList<>(Arrays.asList("Onlíner Prime","Электроника",
-                "Компьютеры и\u00a0сети","Бытовая техника","На каждый день","Стройка и\u00a0ремонт",
-                "Дом и\u00a0сад","Авто и\u00a0мото","Красота и\u00a0спорт","Детям и\u00a0мамам"));
+        ArrayList<String> titles = new ArrayList<>(Arrays.asList("Onlíner Prime", "Электроника",
+                "Компьютеры и\u00a0сети", "Бытовая техника", "На каждый день", "Стройка и\u00a0ремонт",
+                "Дом и\u00a0сад", "Авто и\u00a0мото", "Красота и\u00a0спорт", "Детям и\u00a0мамам"));
         header.clickOnMainNavigationLink("Каталог");
         assertThat(catalogPage.elementsFromSectionCatalog()
                 .as("Количество элементов на странице не совпадает")
@@ -50,9 +53,9 @@ public class CatalogPageTest {
 
     @Test
     public void testTextOfSectionOnCatalog() {
-        ArrayList<String> titles = new ArrayList<>(Arrays.asList("Onlíner Prime","Электроника",
-                "Компьютеры и\u00a0сети","Бытовая техника","На каждый день","Стройка и\u00a0ремонт",
-                "Дом и\u00a0сад","Авто и\u00a0мото","Красота и\u00a0спорт","Детям и\u00a0мамам"));
+        ArrayList<String> titles = new ArrayList<>(Arrays.asList("Onlíner Prime", "Электроника",
+                "Компьютеры и\u00a0сети", "Бытовая техника", "На каждый день", "Стройка и\u00a0ремонт",
+                "Дом и\u00a0сад", "Авто и\u00a0мото", "Красота и\u00a0спорт", "Детям и\u00a0мамам"));
         header.clickOnMainNavigationLink("Каталог");
         assertThat(catalogPage.elementsFromSectionCatalog()
                 .shouldHave(CollectionCondition.exactTexts(titles)));
@@ -62,18 +65,19 @@ public class CatalogPageTest {
     public void testVerifyTitleDisplayed() {
         SelenideElement element =
                 header.clickOnMainNavigationLink("Каталог")
-                .verifyBrowserTitleIsDisplayed("Компьютеры и\u00a0сети");
+                        .verifyBrowserTitleIsDisplayed("Компьютеры и\u00a0сети");
         assertThat(element
                 .as("Данное название отсутствует на странице")
                 .isDisplayed());
 
     }
+
     @Test(dataProvider = "verticalList")
     public void testVerticalListOnComputersSection(String str1, String expected) {
         SelenideElement element =
                 header.clickOnMainNavigationLink("Каталог")
-                .clickOnSectionCatalogLink("Компьютеры и\u00a0сети")
-                .getTextSectionItemCatalogLink(str1);
+                        .clickOnSectionCatalogLink("Компьютеры и\u00a0сети")
+                        .getTextSectionItemCatalogLink(str1);
         assertThat(element.
                 as("Данный элемент не соответсвует ожидаемому элементу")
                 .text()
@@ -84,69 +88,75 @@ public class CatalogPageTest {
     public void testTitleOfList() {
         ElementsCollection elements =
                 header.clickOnMainNavigationLink("Каталог")
-                .clickOnSectionCatalogLink("Компьютеры и\u00a0сети")
-                .clickTextSectionItemCatalog("Комплектующие")
-                .checkTitleOfCatalogPage("Комплектующие");
+                        .clickOnSectionCatalogLink("Компьютеры и\u00a0сети")
+                        .clickTextSectionItemCatalog("Комплектующие")
+                        .checkTitleOfCatalogPage("Комплектующие");
         assertThat(elements
                 .shouldBe(CollectionCondition
-                .noneMatch("Не все комплектующие содержат названия",el -> el.equals(""))));
+                        .noneMatch("Не все комплектующие содержат названия", el -> el.equals(""))));
     }
+
     @Test
     public void testGoodsOfList() {
         ElementsCollection elements =
                 header.clickOnMainNavigationLink("Каталог")
-                .clickOnSectionCatalogLink("Компьютеры и\u00a0сети")
-                .clickTextSectionItemCatalog("Комплектующие")
-                .checkGoodsCatalogPage("Комплектующие");
+                        .clickOnSectionCatalogLink("Компьютеры и\u00a0сети")
+                        .clickTextSectionItemCatalog("Комплектующие")
+                        .checkGoodsCatalogPage("Комплектующие");
         assertThat(
                 elements
                         .shouldBe(CollectionCondition
-                        .noneMatch("Товар или цена пустые",el -> el.equals(""))));
+                                .noneMatch("Товар или цена пустые", el -> el.equals(""))));
     }
+
     @Test
     public void testComponentGoodsOfList() {
-        ElementsCollection elements=
+        ElementsCollection elements =
                 header.clickOnMainNavigationLink("Каталог")
-                .clickOnSectionCatalogLink("Компьютеры и\u00a0сети")
-                .clickTextSectionItemCatalog("Комплектующие")
-                .checkGoodsComponentsSize();
+                        .clickOnSectionCatalogLink("Компьютеры и\u00a0сети")
+                        .clickTextSectionItemCatalog("Комплектующие")
+                        .checkGoodsComponentsSize();
         ElementsCollection components = catalogPage.getGoodsComponentsByName("Комплектующие");
         assertThat(elements
                 .as("Размер компонентов не соответвует размеру элементов")
                 .shouldHave(CollectionCondition.size(components.size())));
     }
+
     @Test
     public void testTitleGoodsOfList() {
         header.clickOnMainNavigationLink("Каталог")
                 .clickOnSectionCatalogLink("Компьютеры и\u00a0сети")
-                   .clickTextSectionItemCatalog("Комплектующие");
+                .clickTextSectionItemCatalog("Комплектующие");
         ElementsCollection components = catalogPage.getGoodsComponentsByName("Комплектующие");
         assertThat(catalogPage.checkComponentTitlesCount(components))
                 .as("Количество тайтлов не соответствует количеству компонентов")
                 .isTrue();
     }
+
     @Test
     public void testComponentPreviewsCountGoodsOfList() {
-        ElementsCollection components=
+        ElementsCollection components =
                 header.clickOnMainNavigationLink("Каталог")
-                .clickOnSectionCatalogLink("Компьютеры и\u00a0сети")
-                .clickTextSectionItemCatalog("Комплектующие")
-                .getGoodsComponentsByName("Комплектующие");
+                        .clickOnSectionCatalogLink("Компьютеры и\u00a0сети")
+                        .clickTextSectionItemCatalog("Комплектующие")
+                        .getGoodsComponentsByName("Комплектующие");
         assertThat(catalogPage.checkComponentPreviewsCount(components)
                 .as("Количество превью не соответствует количеству компонентов")
                 .shouldHave(CollectionCondition.size(components.size())));
     }
+
     @Test
     public void testComponentDescriptionCountGoodsOfList() {
         ElementsCollection components =
                 header.clickOnMainNavigationLink("Каталог")
-                .clickOnSectionCatalogLink("Компьютеры и\u00a0сети")
-                .clickTextSectionItemCatalog("Комплектующие")
-                .getGoodsComponentsByName("Комплектующие");
+                        .clickOnSectionCatalogLink("Компьютеры и\u00a0сети")
+                        .clickTextSectionItemCatalog("Комплектующие")
+                        .getGoodsComponentsByName("Комплектующие");
         assertThat(catalogPage.checkComponentDescriptionCount(components)
                 .as("Количество описания не соответствует количеству компонентов")
                 .shouldHave(CollectionCondition.size(components.size())));
     }
+
     @AfterClass
     public void closeWindow() {
         header.closeAllWindow();

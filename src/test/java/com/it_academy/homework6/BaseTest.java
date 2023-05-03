@@ -7,11 +7,10 @@ import org.testng.annotations.BeforeClass;
 public class BaseTest {
 
     @BeforeClass
-    public void init(){
+    public void init() {
         DriveManager.initDriver("chrome");
 
     }
-
 
     @AfterSuite
     public void closeBrowser() {

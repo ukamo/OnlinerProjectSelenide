@@ -1,7 +1,9 @@
 package com.it_academy.homework6.onliner.page_object;
+
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.it_academy.homework6.onliner.framework.DriveManager;
+
 import java.util.ArrayList;
 import java.util.List;
 

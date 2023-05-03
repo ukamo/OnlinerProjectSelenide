@@ -12,26 +12,32 @@ import static java.lang.String.format;
 public class ProductPage extends BasePage {
     private static final String PRODUCT_GROUP_XPATH_PATTERN =
             "//div[contains(@class,'schema-product__group')]";
+
     public ElementsCollection checkProductGroup() {
         return (ElementsCollection) $x(format(PRODUCT_GROUP_XPATH_PATTERN))
-                .shouldBe(and("clickable",visible,enabled), Duration.ofSeconds(30));
+                .shouldBe(and("clickable", visible, enabled), Duration.ofSeconds(30));
     }
 
     public boolean checkProductTitlesCount(ElementsCollection components) {
         return isComponentSizeWithText(components, "span[data-bind*='html: product.extended_name || product.full_name']");
     }
+
     public boolean checkProductDescriptionCount(ElementsCollection components) {
         return isComponentSizeWithText(components, "span[data-bind*='html: product.description']");
     }
+
     public boolean checkComponentRatingCount(ElementsCollection components) {
         return isComponentSizeWithoutText(components, ".rating__fill");
     }
+
     public boolean checkComponentPriceCount(ElementsCollection components) {
         return isComponentSizeWithText(components, ".schema-product__price");
     }
+
     public boolean checkComponentIconCount(ElementsCollection components) {
         return isComponentSizeWithoutText(components, ".js-product-image-link");
     }
+
     public boolean checkComponentCheckboxCount(ElementsCollection components) {
         return isComponentSizeWithoutText(components, ".schema-product__control");
     }
