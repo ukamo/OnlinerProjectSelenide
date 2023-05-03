@@ -1,5 +1,6 @@
 package com.it_academy.homework6.onliner.page_object.pages;
 
+import com.codeborne.selenide.SelenideElement;
 import com.it_academy.homework6.onliner.page_object.BasePage;
 
 import java.time.Duration;
@@ -10,7 +11,7 @@ import static com.codeborne.selenide.WebDriverRunner.driver;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static java.lang.String.format;
 
-public class MainPageSearch extends BasePage {
+public class PageSearch extends BasePage {
     private static final String SEARCH_MAIN_TEXT_XPATH_PATTERN =
             "//input[contains(@class,'fast-search__input') and contains(@placeholder , '%s')]";
     private static final String SEARCH_MAIN_XPATH_PATTERN =
@@ -25,11 +26,11 @@ public class MainPageSearch extends BasePage {
     String parentWindow = null;
 
 
-    public void verifySearchIsDisplayed(String title){
-        $x(format(SEARCH_MAIN_TEXT_XPATH_PATTERN,title))
+    public SelenideElement getSearchElement(String title){
+        return $x(format(SEARCH_MAIN_TEXT_XPATH_PATTERN, title))
                 .shouldBe(and("clickable",visible,enabled), Duration.ofSeconds(10));
     }
-    public MainPageSearch typeOnSearchField(String inputText) {
+    public PageSearch typeOnSearchField(String inputText) {
         $x(format(SEARCH_MAIN_XPATH_PATTERN))
                 .shouldBe(and("clickable",visible,enabled), Duration.ofSeconds(10))
                 .setValue(inputText)
@@ -37,38 +38,37 @@ public class MainPageSearch extends BasePage {
         return this;
     }
 
-    public boolean verifySearchField(String inputText) {
+    public boolean isSearchFieldFillOut(String expectedValue) {
         return $x(format(SEARCH_MAIN_XPATH_PATTERN))
-                .getValue().matches(inputText);
+                .getValue().matches(expectedValue);
     }
 
-    public MainPageSearch verifyIFrameFieldSearching() {
-        $(format(IFRAME_SEARCH_CSS_PATTERN))
+    public SelenideElement verifyIFrameFieldSearching() {
+        return $(format(IFRAME_SEARCH_CSS_PATTERN))
                 .shouldBe(visible, Duration.ofSeconds(10));
-        return this;
     }
 
-    public MainPageSearch swithOnIFrameFieldSearching() {
+    public PageSearch swithOnIFrameFieldSearching() {
         parentWindow = getWebDriver().getWindowHandle();
         driver().switchTo().frame(IFRAME_NUMBER_PATTERN);
         return this;
     }
 
-    public MainPageSearch closeIFrameFieldSearching() {
+    public PageSearch closeIFrameFieldSearching() {
         $x(format(IFRAME_CLOSE_XPATH_PATTERN))
                 .shouldBe(and("clickable",visible,enabled), Duration.ofSeconds(10))
                 .click();
         return this;
     }
-    public MainPageSearch switchFromMain() {
+    public PageSearch switchFromMain() {
         getWebDriver().switchTo().parentFrame();
         return this;
     }
 
-    public MainPageSearch deleteDataInSearchField() {
-        $x(format(SEARCH_MAIN_XPATH_PATTERN))
+    public SelenideElement deleteDataInSearchField() {
+          $x(format(SEARCH_MAIN_XPATH_PATTERN))
                 .clear();
-        return this;
+        return $x(format(SEARCH_MAIN_XPATH_PATTERN));
     }
 
 }

@@ -18,21 +18,21 @@ public class ProductPage extends BasePage {
     }
 
     public boolean checkProductTitlesCount(ElementsCollection components) {
-        return checkComponentPart(components, "span[data-bind*='html: product.extended_name || product.full_name']");
+        return isComponentSizeWithText(components, "span[data-bind*='html: product.extended_name || product.full_name']");
     }
     public boolean checkProductDescriptionCount(ElementsCollection components) {
-        return checkComponentPart(components, "span[data-bind*='html: product.description']");
+        return isComponentSizeWithText(components, "span[data-bind*='html: product.description']");
     }
     public boolean checkComponentRatingCount(ElementsCollection components) {
-        return checkComponentPartWithoutText(components, ".rating__fill");
+        return isComponentSizeWithoutText(components, ".rating__fill");
     }
     public boolean checkComponentPriceCount(ElementsCollection components) {
-        return checkComponentPart(components, ".schema-product__price");
+        return isComponentSizeWithText(components, ".schema-product__price");
     }
     public boolean checkComponentIconCount(ElementsCollection components) {
-        return checkComponentPartWithoutText(components, ".js-product-image-link");
+        return isComponentSizeWithoutText(components, ".js-product-image-link");
     }
     public boolean checkComponentCheckboxCount(ElementsCollection components) {
-        return checkComponentPartWithoutText(components, ".schema-product__control");
+        return isComponentSizeWithoutText(components, ".schema-product__control");
     }
 }
