@@ -129,7 +129,7 @@ public class CatalogPageTest {
                         .clickOnSectionCatalogLink("Компьютеры и\u00a0сети")
                         .clickTextSectionItemCatalog("Комплектующие")
                         .getGoodsComponentsByName("Комплектующие");
-        assertThat(catalogPage.checkComponentTitlesCount(components)
+        assertThat(catalogPage.checkComponentTitlesCount()
                 .as("Количество тайтлов не соответствует количеству компонентов")
                 .shouldHave(CollectionCondition.size(components.size())));
     }
@@ -141,7 +141,7 @@ public class CatalogPageTest {
                         .clickOnSectionCatalogLink("Компьютеры и\u00a0сети")
                         .clickTextSectionItemCatalog("Комплектующие")
                         .getGoodsComponentsByName("Комплектующие");
-        assertThat(catalogPage.checkComponentPreviewsCount(components)
+        assertThat(catalogPage.checkComponentPreviewsCount()
                 .as("Количество превью не соответствует количеству компонентов")
                 .shouldHave(CollectionCondition.size(components.size())));
     }
@@ -153,7 +153,7 @@ public class CatalogPageTest {
                         .clickOnSectionCatalogLink("Компьютеры и\u00a0сети")
                         .clickTextSectionItemCatalog("Комплектующие")
                         .getGoodsComponentsByName("Комплектующие");
-        assertThat(catalogPage.checkComponentDescriptionCount(components)
+        assertThat(catalogPage.checkComponentDescriptionCount()
                 .as("Количество описания не соответствует количеству компонентов")
                 .shouldHave(CollectionCondition.size(components.size())));
     }

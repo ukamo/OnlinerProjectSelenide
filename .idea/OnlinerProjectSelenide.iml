@@ -94,5 +94,15 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: commons-io:commons-io:2.11.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.assertj:assertj-core:3.24.2" level="project" />
     <orderEntry type="library" name="Maven: net.bytebuddy:byte-buddy:1.12.21" level="project" />
+    <orderEntry type="library" name="Maven: io.qameta.allure:allure-selenide:2.13.6" level="project" />
+    <orderEntry type="library" name="Maven: io.qameta.allure:allure-java-commons:2.13.6" level="project" />
+    <orderEntry type="library" name="Maven: io.qameta.allure:allure-model:2.13.6" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.11.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.11.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.fasterxml.jackson.core:jackson-core:2.11.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.tika:tika-core:1.24.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.jooq:joor-java-8:0.9.13" level="project" />
+    <orderEntry type="library" name="Maven: io.qameta.allure:allure-testng:2.13.6" level="project" />
+    <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.9.8" level="project" />
   </component>
 </module>
