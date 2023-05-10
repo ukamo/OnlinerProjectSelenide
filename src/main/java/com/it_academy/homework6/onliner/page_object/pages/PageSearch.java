@@ -3,13 +3,15 @@ package com.it_academy.homework6.onliner.page_object.pages;
 import com.codeborne.selenide.SelenideElement;
 import com.it_academy.homework6.onliner.page_object.BasePage;
 
-import java.time.Duration;
+
+import java.util.Objects;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.driver;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static java.lang.String.format;
+import static java.time.Duration.ofSeconds;
 
 public class PageSearch extends BasePage {
     private static final String SEARCH_MAIN_TEXT_XPATH_PATTERN = "//input[contains(@class,'fast-search__input') and contains(@placeholder , '%s')]";
@@ -23,20 +25,20 @@ public class PageSearch extends BasePage {
 
 
     public SelenideElement getSearchElement(String title) {
-        return $x(format(SEARCH_MAIN_TEXT_XPATH_PATTERN, title)).shouldBe(and("clickable", visible, enabled), Duration.ofSeconds(10));
+        return $x(format(SEARCH_MAIN_TEXT_XPATH_PATTERN, title)).shouldBe(and("clickable", visible, enabled), ofSeconds(10));
     }
 
     public PageSearch typeOnSearchField(String inputText) {
-        $x(format(SEARCH_MAIN_XPATH_PATTERN)).shouldBe(and("clickable", visible, enabled), Duration.ofSeconds(10)).setValue(inputText).pressEnter();
+        $x(format(SEARCH_MAIN_XPATH_PATTERN)).shouldBe(and("clickable", visible, enabled), ofSeconds(10)).setValue(inputText).pressEnter();
         return this;
     }
 
     public boolean isSearchFieldFillOut(String expectedValue) {
-        return $x(format(SEARCH_MAIN_XPATH_PATTERN)).getValue().matches(expectedValue);
+        return Objects.requireNonNull($x(format(SEARCH_MAIN_XPATH_PATTERN)).getValue()).matches(expectedValue);
     }
 
     public SelenideElement verifyIFrameFieldSearching() {
-        return $(format(IFRAME_SEARCH_CSS_PATTERN)).shouldBe(visible, Duration.ofSeconds(10));
+        return $(format(IFRAME_SEARCH_CSS_PATTERN)).shouldBe(visible, ofSeconds(10));
     }
 
     public PageSearch swithOnIFrameFieldSearching() {
@@ -46,7 +48,7 @@ public class PageSearch extends BasePage {
     }
 
     public PageSearch closeIFrameFieldSearching() {
-        $x(format(IFRAME_CLOSE_XPATH_PATTERN)).shouldBe(and("clickable", visible, enabled), Duration.ofSeconds(10)).click();
+        $x(format(IFRAME_CLOSE_XPATH_PATTERN)).shouldBe(and("clickable", visible, enabled), ofSeconds(10)).click();
         return this;
     }
 

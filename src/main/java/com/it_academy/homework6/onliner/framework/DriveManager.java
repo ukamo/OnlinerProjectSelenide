@@ -4,6 +4,7 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 
 import static com.codeborne.selenide.Selenide.open;
+import static java.lang.System.getProperty;
 
 public class DriveManager {
     public static void closeBrowser() {
@@ -11,9 +12,19 @@ public class DriveManager {
         Selenide.closeWebDriver();
     }
 
+    public static void configurationBrowser(){
+        if (getProperty("driverType") != null){
+            initDriver(getProperty("driverType"));
+        } else {
+            initDriver("chrome");
+        }
+    }
+
     public static void initDriver(String type) {
         Configuration.browser = type;
         Configuration.pageLoadTimeout = 200000;
         open();
     }
+
+
 }

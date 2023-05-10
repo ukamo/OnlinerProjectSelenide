@@ -1,9 +1,9 @@
 package com.it_academy.homework6;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import com.it_academy.homework6.onliner.framework.DriveManager;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 public class BaseTest {
@@ -14,12 +14,13 @@ public class BaseTest {
                 new AllureSelenide()
                         .screenshots(true)
                         .savePageSource(true));
-        DriveManager.initDriver("chrome");
+        //DriveManager.initDriver("chrome");
 
     }
 
-    @AfterSuite
+    @AfterClass
     public void closeBrowser() {
-        DriveManager.closeBrowser();
+        Selenide.closeWindow();
+        Selenide.closeWebDriver();
     }
 }

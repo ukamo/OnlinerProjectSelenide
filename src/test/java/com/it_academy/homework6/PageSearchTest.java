@@ -2,10 +2,13 @@ package com.it_academy.homework6;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.it_academy.homework6.onliner.Links;
 import com.it_academy.homework6.onliner.page_object.pages.PageSearch;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import static com.codeborne.selenide.Condition.exist;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -15,7 +18,7 @@ public class PageSearchTest {
     @BeforeClass
     public void createForTestProductPage() {
         pageSearch = new PageSearch();
-        getWebDriver().get("https://www.onliner.by/");
+        getWebDriver().get(Links.HOME_PAGE.getLink());
     }
 
     @Test
@@ -23,9 +26,9 @@ public class PageSearchTest {
         SelenideElement searchElement =
                 pageSearch
                         .getSearchElement("Поиск");
-        assertThat(searchElement
+        searchElement
                 .as("Элемент на странице не отображается")
-                .isDisplayed());
+                .shouldBe(visible);
     }
 
     @Test
@@ -46,9 +49,10 @@ public class PageSearchTest {
                         .typeOnSearchField("Тест")
                         .swithOnIFrameFieldSearching()
                         .verifyIFrameFieldSearching();
-        assertThat(searchElement
+        searchElement
                 .as("IFrame не открывается")
-                .exists());
+                .shouldBe(exist);
+
     }
 
     @Test
@@ -60,8 +64,7 @@ public class PageSearchTest {
                         .closeIFrameFieldSearching()
                         .switchFromMain()
                         .deleteDataInSearchField();
-        assertThat(element.shouldBe(Condition.empty)
-                .as("Поле не пустое"));
+        element.as("Поле не пустое").shouldBe(Condition.empty);
     }
 
 
