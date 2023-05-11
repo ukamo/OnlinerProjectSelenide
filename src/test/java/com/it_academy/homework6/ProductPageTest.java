@@ -18,7 +18,6 @@ public class ProductPageTest extends BaseTest {
     public void createForTestProductPage() {
         header = new Header();
         productPage = new ProductPage();
-        //getWebDriver().get("https://www.onliner.by/");
         getWebDriver().get(Links.HOME_PAGE.getLink());
     }
 
