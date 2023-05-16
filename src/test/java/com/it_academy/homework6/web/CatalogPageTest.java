@@ -18,10 +18,8 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class CatalogPageTest {
-
     private Header header;
     private CatalogPage catalogPage;
-
 
     @BeforeClass
     public void createForTestCatalogPage() {
@@ -102,9 +100,9 @@ public class CatalogPageTest {
                         .clickOnSectionCatalogLink("Компьютеры и\u00a0сети")
                         .clickTextSectionItemCatalog("Комплектующие")
                         .checkGoodsCatalogPage();
-                elements
-                        .shouldBe(CollectionCondition
-                                .noneMatch("Товар или цена пустые", el -> el.equals("")));
+        elements
+                .shouldBe(CollectionCondition
+                        .noneMatch("Товар или цена пустые", el -> el.equals("")));
     }
 
     @Test

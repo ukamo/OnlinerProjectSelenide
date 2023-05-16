@@ -2,7 +2,7 @@ package com.it_academy.homework6.onliner.rest_api.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true )
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Sushi {
     public int getId() {
         return id;
@@ -40,9 +40,6 @@ public class Sushi {
     private String key;
     private String name;
     private String full_name;
-
-
-
 
     @Override
     public String toString() {

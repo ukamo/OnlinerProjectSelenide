@@ -1,6 +1,5 @@
 package com.it_academy.homework6.web;
 
-
 import com.codeborne.selenide.ElementsCollection;
 import com.it_academy.homework6.BaseTest;
 import com.it_academy.homework6.onliner.Links;
@@ -44,7 +43,7 @@ public class ProductPageTest extends BaseTest {
                 .clickTextSectionItemCatalog("Аудиотехника")
                 .clickOnProductLink("Наушники");
         ElementsCollection components = productPage.checkProductDescriptionCount();
-                components.as("Описание меньше 0")
+        components.as("Описание меньше 0")
                 .shouldHave(sizeGreaterThan(0), ofSeconds(10));
     }
 
@@ -93,7 +92,6 @@ public class ProductPageTest extends BaseTest {
                 .clickOnCatalogClassifierLink("Электроника")
                 .clickTextSectionItemCatalog("Аудиотехника")
                 .clickOnProductLink("Наушники");
-        productPage.checkProductGroup();
         productPage.checkComponentCheckbox()
                 .as("Чекбоксы меньше 0")
                 .shouldHave(sizeGreaterThan(0), ofSeconds(10));

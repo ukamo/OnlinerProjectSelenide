@@ -2,7 +2,9 @@ package com.it_academy.homework6.onliner.page_object.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import com.it_academy.homework6.onliner.page_object.BasePage;
+
 import java.util.Objects;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.driver;

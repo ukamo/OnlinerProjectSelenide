@@ -12,8 +12,8 @@ import static java.lang.System.getProperty;
 
 public class DriveManager {
 
-    public static void configurationBrowser(){
-        if (getProperty("driverType") != null){
+    public static void configurationBrowser() {
+        if (getProperty("driverType") != null) {
             initDriver(getProperty("driverType"));
         } else {
             initDriver("chrome");
@@ -32,8 +32,6 @@ public class DriveManager {
         }
         open();
     }
-
-
 
 
 }

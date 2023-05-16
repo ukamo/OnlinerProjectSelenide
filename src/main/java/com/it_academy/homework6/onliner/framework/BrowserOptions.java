@@ -7,23 +7,24 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class BrowserOptions {
 
-    public static ChromeOptions getChromeOptions(){
+    public static ChromeOptions getChromeOptions() {
         ChromeOptions options = new ChromeOptions();
-        options.setCapability("browserName","chrome");
+        options.setCapability("browserName", "chrome");
         options.addArguments("--start-maximized");
         options.addArguments("--ignore-certificate-errors");
         options.addArguments("--disable-popup-blocking");
         return options;
     }
 
-    public static FirefoxOptions getFirefoxOptions(){
+    public static FirefoxOptions getFirefoxOptions() {
         FirefoxOptions options = new FirefoxOptions();
         options.setPlatformName(Platform.WIN10.name());
         options.setCapability("browserName", "firefox");
         return options;
     }
-    public static EdgeOptions getEdgeBrowserOptions(){
-        EdgeOptions options  = new EdgeOptions();
+
+    public static EdgeOptions getEdgeBrowserOptions() {
+        EdgeOptions options = new EdgeOptions();
         options.setPlatformName(Platform.WIN10.name());
         options.setCapability("browserName", "edge");
         return options;
