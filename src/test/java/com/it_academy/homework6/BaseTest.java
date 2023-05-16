@@ -14,7 +14,6 @@ public class BaseTest {
                 new AllureSelenide()
                         .screenshots(true)
                         .savePageSource(true));
-        //DriveManager.initDriver("chrome");
 
     }
 

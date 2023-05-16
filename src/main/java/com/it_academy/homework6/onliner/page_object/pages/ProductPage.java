@@ -3,7 +3,9 @@ import com.codeborne.selenide.ElementsCollection;
 import com.it_academy.homework6.onliner.page_object.BasePage;
 import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Condition.visible;
+import javax.lang.model.element.Element;
+
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 import static java.lang.String.format;
@@ -12,6 +14,9 @@ import static java.time.Duration.ofSeconds;
 public class ProductPage extends BasePage {
     private static final String PRODUCT_GROUP_XPATH_PATTERN =
             "//div[contains(@class,'schema-product__group')]";
+
+    private static final String CHECKBOX_XPATH_PATTERN = "//span[contains(@class, 'schema-filter__checkbox-text') and contains(text(), '%s')]";
+
     @Step("check Product Group")
     public ElementsCollection checkProductGroup() {
         $x(PRODUCT_GROUP_XPATH_PATTERN).shouldBe(visible, ofSeconds(30));
@@ -24,11 +29,11 @@ public class ProductPage extends BasePage {
     }
     @Step ("Check product Description Count")
     public ElementsCollection checkProductDescriptionCount() {
-          $x("//span[contains(@data-bind,'html: product.description')]").shouldBe(visible,ofSeconds(30));
+        $x("//span[contains(@data-bind,'html: product.description')]").shouldBe(visible,ofSeconds(30));
         return $$x("//span[contains(@data-bind,'html: product.description')]");
     }
-    @Step ("Check component rating Count")
 
+    @Step ("Check component rating Count")
     public ElementsCollection checkComponentRating() {
         $x("//div[@class='schema-product__rating-group']").shouldBe(visible, ofSeconds(30));
         return $$x("//div[@class='schema-product__rating-group']");
@@ -49,4 +54,5 @@ public class ProductPage extends BasePage {
         $x("//div[@class ='schema-product']").shouldBe(visible, ofSeconds(30));
         return  $$x("//div[@class ='schema-product']");
     }
+
 }
