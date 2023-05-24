@@ -5,6 +5,8 @@ import com.it_academy.homework6.BaseTest;
 import com.it_academy.homework6.onliner.Links;
 import com.it_academy.homework6.onliner.page_object.pages.Header;
 import com.it_academy.homework6.onliner.page_object.pages.ProductPage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -13,8 +15,18 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static java.time.Duration.ofSeconds;
 
 public class ProductPageTest extends BaseTest {
+
+    protected  static final Logger  LOG = LoggerFactory.getLogger(ProductPageTest.class);
     private ProductPage productPage;
     private Header header;
+
+    @Test
+    public void voidTestLogs(){
+        LOG.info("Test Info");
+        LOG.warn("Test Warn");
+        LOG.error("Test Error");
+        LOG.debug("Test debug");
+    }
 
     @BeforeClass
     public void createForTestProductPage() {
