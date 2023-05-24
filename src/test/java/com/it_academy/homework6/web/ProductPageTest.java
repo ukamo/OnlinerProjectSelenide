@@ -5,8 +5,8 @@ import com.it_academy.homework6.BaseTest;
 import com.it_academy.homework6.onliner.Links;
 import com.it_academy.homework6.onliner.page_object.pages.Header;
 import com.it_academy.homework6.onliner.page_object.pages.ProductPage;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -16,7 +16,7 @@ import static java.time.Duration.ofSeconds;
 
 public class ProductPageTest extends BaseTest {
 
-    protected  static final Logger  LOG = LoggerFactory.getLogger(ProductPageTest.class);
+    protected  static final Logger  LOG = LogManager.getLogger(ProductPageTest.class);
     private ProductPage productPage;
     private Header header;
 

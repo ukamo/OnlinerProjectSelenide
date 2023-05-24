@@ -6,6 +6,8 @@ import com.codeborne.selenide.SelenideElement;
 import com.it_academy.homework6.onliner.Links;
 import com.it_academy.homework6.onliner.page_object.pages.CatalogPage;
 import com.it_academy.homework6.onliner.page_object.pages.Header;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.annotations.*;
 
 import java.util.ArrayList;
@@ -18,6 +20,8 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class CatalogPageTest {
+
+    protected  static final Logger LOG = LogManager.getLogger(CatalogPageTest.class);
     private Header header;
     private CatalogPage catalogPage;
 
