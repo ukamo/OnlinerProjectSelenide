@@ -4,6 +4,8 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.it_academy.homework6.onliner.Links;
 import com.it_academy.homework6.onliner.page_object.pages.PageSearch;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -13,6 +15,8 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class PageSearchTest {
+
+    protected  static final Logger LOG = LogManager.getLogger(PageSearchTest.class);
     private PageSearch pageSearch;
 
     @BeforeClass
